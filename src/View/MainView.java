@@ -14,6 +14,7 @@ public class MainView {
         JMenu menu = new JMenu("File");
         menuBar.add(menu);
         JMenuItem menuItem = new JMenuItem("Load combos from file");
+        JMenuItem menuItem2 = new JMenuItem("Load accounts from file");
         menu.add(menuItem);
         frame.setJMenuBar(menuBar);
         String[] columnNames = {"Region", "Username", "Password", "RP", "BE", "Level", "Champions", "Skins"};
