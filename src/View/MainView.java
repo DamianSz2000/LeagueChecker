@@ -17,7 +17,7 @@ public class MainView {
         JMenuItem menuItem2 = new JMenuItem("Load accounts from file");
         menu.add(menuItem);
         frame.setJMenuBar(menuBar);
-        String[] columnNames = {"Region", "Username", "Password", "RP", "BE", "Level", "Champions", "Skins"};
+        String[] columnNames = {"Region", "Username", "Password", "RP", "BE", "Level", "Champions", "Skins", "Details"};
         JTable table = new JTable(0, columnNames.length);
         table.setPreferredScrollableViewportSize(new Dimension(1280, 720));
         table.setFillsViewportHeight(true);
@@ -26,6 +26,13 @@ public class MainView {
         model.setColumnIdentifiers(columnNames);
         JScrollPane scrollPane = new JScrollPane(table);
         frame.add(scrollPane);
+
+
+        menuBar.setBackground(new Color(141, 153, 174));
+        menuBar.setForeground(new Color(255, 255, 255));
+        table.setBackground(new Color(43, 45, 66));
+        table.getTableHeader().setBackground(new Color(43, 45, 66));
+        table.getTableHeader().setForeground(new Color(255, 255, 255));
 
 
 
