@@ -1,5 +1,7 @@
+import view.MainView;
 public class Main {
     public static void main(String[] args) {
-        view.MainView.createAndShowGUI();
+        MainView view = new MainView();
+        view.createAndShowGUI();
     }
 }
