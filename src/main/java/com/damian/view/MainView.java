@@ -1,4 +1,4 @@
-package view;
+package com.damian.view;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

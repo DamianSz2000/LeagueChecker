@@ -1,4 +1,4 @@
-package model;
+package com.damian.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
