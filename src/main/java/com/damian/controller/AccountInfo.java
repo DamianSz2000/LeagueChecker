@@ -1,4 +1,4 @@
 package com.damian.controller;
 
-public class Auth {
+public class AccountInfo {
 }

@@ -15,6 +15,19 @@
     <maven.compiler.source>19</maven.compiler.source>
     <maven.compiler.target>19</maven.compiler.target>
   </properties>
+  <repositories>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
+  <dependencies>
+    <dependency>
+    <groupId>com.github.hawolt</groupId>
+    <artifactId>league-client-api</artifactId>
+    <version>a92b006fd2</version>
+  </dependency>
+  </dependencies>
 
 
 </project>
