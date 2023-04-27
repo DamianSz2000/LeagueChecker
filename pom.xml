@@ -23,9 +23,9 @@
   </repositories>
   <dependencies>
     <dependency>
-    <groupId>com.github.hawolt</groupId>
+    <groupId>com.github.DamianSz2000</groupId>
     <artifactId>league-client-api</artifactId>
-    <version>a92b006fd2</version>
+    <version>f17fd1f42c</version>
   </dependency>
   </dependencies>
 
