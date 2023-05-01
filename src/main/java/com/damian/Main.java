@@ -1,18 +1,19 @@
 package com.damian;
 
+import com.damian.controller.AccountInfo;
 import com.damian.view.MainView;
 import com.damian.controller.VirtualClientInstance;
-import com.hawolt.logger.Logger;
-import com.hawolt.virtual.leagueclient.authentication.Session;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 
 public class Main {
     public static void main(String[] args) {
-        Logger logger = new Logger();
         MainView view = new MainView();
         view.createAndShowGUI();
-        VirtualClientInstance client = new VirtualClientInstance("kretopeak2", "720912piotr");
-        Session session = client.virtualLeagueClient.getSession();
-
-
+        AccountInfo accountInfo = new AccountInfo();
+        System.out.println(accountInfo.blueEssence);
+        System.out.println(accountInfo.riotPoints);
     }
 }
