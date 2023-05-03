@@ -1,8 +1,6 @@
 package com.damian.controller;
-import com.damian.controller.Urls;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.hawolt.generic.data.Platform;
 import com.hawolt.virtual.leagueclient.authentication.Session;
 
 import java.io.IOException;
@@ -13,17 +11,19 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class AccountInfo {
-    public String username;
-    public String password;
-    public Session session;
-    public String sessionToken;
-    public String accessToken;
-    public String puuid;
-    public String accountId;
-    public String blueEssence;
-    public String riotPoints;
-    public VirtualClientInstance virtualClientInstance;
-    public String region;
+    private String username;
+    private String password;
+    private Session session;
+    private String sessionToken;
+    private String accessToken;
+    private String puuid;
+    private String accountId;
+    private String blueEssence;
+    private String riotPoints;
+    private VirtualClientInstance virtualClientInstance;
+    private String region;
+    private String location;
+    private UrlsGetter urlsGetter;
     private HttpClient client = HttpClient.newHttpClient();
     public AccountInfo(String username, String password) {
         this.username = username;
@@ -33,6 +33,7 @@ public class AccountInfo {
         this.setSessionToken();
         this.setRegion();
         this.setAccessToken();
+        this.urlsGetter = new UrlsGetter(this.region.substring(0, 3), this.puuid, this.location, this.accountId);
         try {
             this.setWalletBalance();
         } catch (URISyntaxException | IOException | InterruptedException e) {
@@ -54,7 +55,7 @@ public class AccountInfo {
     public void setWalletBalance() throws URISyntaxException, IOException, InterruptedException {
         Gson gson = new Gson();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI("https://" + region.substring(0, 3) + Urls.walletBalanceUrl))
+                .uri(new URI(this.urlsGetter.getBeAndRpUrl()))
                 .headers("Authorization", "Bearer " + this.accessToken)
                 .GET().build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());

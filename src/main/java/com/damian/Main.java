@@ -13,7 +13,6 @@ public class Main {
         MainView view = new MainView();
         view.createAndShowGUI();
         AccountInfo accountInfo = new AccountInfo();
-        System.out.println(accountInfo.blueEssence);
-        System.out.println(accountInfo.riotPoints);
+
     }
 }
