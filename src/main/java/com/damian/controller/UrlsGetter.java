@@ -4,9 +4,9 @@ public class UrlsGetter {
     private String region;
     private String puuid;
     private String location;
-    private String accountId;
+    private Long accountId;
 
-    public UrlsGetter(String region, String puuid, String location, String accountId) {
+    public UrlsGetter(String region, String puuid, String location, Long accountId) {
         this.region = region;
         this.puuid = puuid;
         this.location = location;
@@ -14,11 +14,14 @@ public class UrlsGetter {
     }
 
     public String getBeAndRpUrl() {
-        return "https://" + region + ".store.leagueoflegends.com/storefront/v2/wallet?language=en_GB";
+        return "https://" + region.substring(0, 3) + ".store.leagueoflegends.com/storefront/v2/wallet?language=en_GB";
     }
 
     public String getChampionsUrl() {
-        return "https://" + region + "-red.lol.sgp.pvp.net/lolinventoryservice-ledge/v2/inventoriesWithLoyalty?puuid=" + puuid + "&inventoryTypes=CHAMPION&location=" + location + "&accountId=" + accountId + "&signed=true";
+        if(this.region.equals("EUN1")){
+            this.region = "eune";
+        }
+        return "https://" + region + "-red.lol.sgp.pvp.net/lolinventoryservice-ledge/v2/inventoriesWithLoyalty?puuid=" + puuid + "&inventoryTypes=CHAMPION&location=" + location + "&accountId=" + accountId;
     }
 
     public String getSkinsUrl() {
