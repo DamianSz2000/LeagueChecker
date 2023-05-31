@@ -1,9 +1,12 @@
 package com.damian.controller;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.hawolt.virtual.leagueclient.authentication.Session;
 import lombok.Getter;
 import lombok.Setter;
+import org.json.JSONString;
 
 import java.io.IOException;
 import java.net.URI;
@@ -90,4 +93,21 @@ public class AccountInfo {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         this.champions = gson.fromJson(response.body(), JsonElement.class);
     }
+    public String returnAsJSONString() {
+        Gson gson = new Gson();
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("username", username);
+        jsonObject.addProperty("password", password);
+        jsonObject.addProperty("sessionToken", sessionToken);
+        jsonObject.addProperty("accessToken", accessToken);
+        jsonObject.addProperty("puuid", puuid);
+        jsonObject.addProperty("accountId", accountId);
+        jsonObject.addProperty("blueEssence", blueEssence);
+        jsonObject.addProperty("riotPoints", riotPoints);
+        jsonObject.addProperty("region", region);
+        jsonObject.addProperty("location", location);
+        jsonObject.add("champions", champions);
+        return gson.toJson(jsonObject);
+    }
+
 }
